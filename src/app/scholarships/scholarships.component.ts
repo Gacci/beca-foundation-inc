@@ -58,8 +58,8 @@ export class ScholarshipsComponent implements OnInit {
         this.titling.setTitle(`${this.env.siteName} | Home`);
 
 
-        this.generalScholarshipPeriod.from = new Date(this.now.getFullYear(), 8, 3, 0, 0, 0, 0);
-        this.generalScholarshipPeriod.to = new Date(this.now.getFullYear(), 10, 1, 23, 59, 59, 999)
+        this.generalScholarshipPeriod.from = new Date(this.now.getFullYear(), 0, 6, 0, 0, 0, 0);
+        this.generalScholarshipPeriod.to = new Date(this.now.getFullYear(), 2, 30, 23, 59, 59, 999)
         this.isGeneralScholarshipOpen = 
             this.now >= this.generalScholarshipPeriod.from && this.generalScholarshipPeriod.to >= this.now;
 
