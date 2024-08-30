@@ -24,5 +24,5 @@ import { NavigationComponent } from './components/navigation/navigation.componen
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'frontend';
+  title = 'The Beca Foundation Inc.';
 }
