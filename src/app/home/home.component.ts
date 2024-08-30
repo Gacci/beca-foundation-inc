@@ -3,37 +3,37 @@ import { Title } from '@angular/platform-browser';
 
 import { Environment } from '../interface/environment.interface';
 import { environment } from '../../environments/environment';
-
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-home',
+  imports: [RouterLink, RouterLinkActive],
   standalone: true,
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-    /**
-     * 
-     */
-    public env: Environment = environment;
-    
-    /**
-     * 
-     */
-    public selectedDonationAmount: number = 0;
-    
-    /**
-     * 
-     * @param titling 
-     */
-    constructor(private titling: Title) { }
+  /**
+   *
+   */
+  public env: Environment = environment;
 
+  /**
+   *
+   */
+  public selectedDonationAmount: number = 0;
 
-    ngOnInit(): void {
-        this.titling.setTitle(`${this.env.siteName} | Home`);
-    }
+  /**
+   *
+   * @param titling
+   */
+  constructor(private titling: Title) {}
 
-    setDonationAmount(amount: number): void {
-        this.selectedDonationAmount = amount;
-    }
+  ngOnInit(): void {
+    this.titling.setTitle(`${this.env.siteName} | Home`);
+  }
+
+  setDonationAmount(amount: number): void {
+    this.selectedDonationAmount = amount;
+  }
 }

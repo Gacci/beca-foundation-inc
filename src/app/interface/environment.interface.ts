@@ -1,4 +1,4 @@
 export interface Environment {
-    production: boolean;
-    siteName: string;
+  production: boolean;
+  siteName: string;
 }

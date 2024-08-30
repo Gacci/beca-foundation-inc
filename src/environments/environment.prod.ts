@@ -1,6 +1,6 @@
-import { Environment } from "../app/interface/environment.interface";
+import { Environment } from '../app/interface/environment.interface';
 
 export const environment: Environment = {
-    production: true,
-    siteName: 'The BECA Foundation Inc.'
+  production: true,
+  siteName: 'The BECA Foundation Inc.',
 };

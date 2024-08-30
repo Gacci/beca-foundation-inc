@@ -8,25 +8,20 @@ import { ScholarshipsComponent } from './scholarships/scholarships.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NavigationComponent } from './components/navigation/navigation.component';
 
-
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
-    AboutComponent,
-    HomeComponent,
-    FooterComponent,
-    NavigationComponent,
-    ScholarshipsComponent,
-
     CommonModule,
     RouterOutlet,
-  ],
-  providers: [
-    // provideNgxMask(),
+    AboutComponent,
+    HomeComponent,
+    ScholarshipsComponent,
+    FooterComponent,
+    NavigationComponent,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'frontend';
