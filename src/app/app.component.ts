@@ -1,13 +1,33 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+
+import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './home/home.component';
+import { ScholarshipsComponent } from './scholarships/scholarships.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavigationComponent } from './components/navigation/navigation.component';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    AboutComponent,
+    HomeComponent,
+    FooterComponent,
+    NavigationComponent,
+    ScholarshipsComponent,
+
+    CommonModule,
+    RouterOutlet,
+  ],
+  providers: [
+    // provideNgxMask(),
+  ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'BecaFoundation';
+  title = 'frontend';
 }
