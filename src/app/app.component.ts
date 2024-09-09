@@ -5,8 +5,8 @@ import { CommonModule } from '@angular/common';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ScholarshipsComponent } from './scholarships/scholarships.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @Component({
   selector: 'app-root',

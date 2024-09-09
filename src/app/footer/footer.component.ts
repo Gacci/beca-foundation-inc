@@ -2,8 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { Environment } from '../../interface/environment.interface';
-import { environment } from '../../../environments/environment';
+import { Environment } from '../interface/environment.interface';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'beca-footer',

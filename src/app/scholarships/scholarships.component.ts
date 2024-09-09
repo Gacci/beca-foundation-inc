@@ -75,7 +75,7 @@ export class ScholarshipsComponent implements OnInit {
     );
     this.isGeneralScholarshipOpen =
       this.now >= this.generalScholarshipPeriod.from &&
-      this.generalScholarshipPeriod.to >= this.now;
+      this.now <= this.generalScholarshipPeriod.to;
 
     this.newellScholarshipPeriod.from = new Date(
       this.now.getFullYear(),
@@ -96,9 +96,7 @@ export class ScholarshipsComponent implements OnInit {
       999,
     );
     this.isNewellScholarshipOpen =
-      this.now >= this.generalScholarshipPeriod.from &&
-      this.generalScholarshipPeriod.to >= this.now;
-
-    console.log(this.generalScholarshipPeriod);
+      this.now >= this.newellScholarshipPeriod.from &&
+      this.now <= this.newellScholarshipPeriod.to;
   }
 }
