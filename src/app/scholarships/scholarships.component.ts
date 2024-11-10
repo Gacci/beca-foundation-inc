@@ -56,7 +56,7 @@ export class ScholarshipsComponent implements OnInit {
     this.titling.setTitle(`${this.env.siteName} | Home`);
 
     this.generalScholarshipPeriod.from = new Date(
-      this.now.getFullYear(),
+      this.now.getFullYear() + (this.now.getMonth() >= 3 ? 1 : 0),
       0,
       6,
       0,
@@ -65,7 +65,7 @@ export class ScholarshipsComponent implements OnInit {
       0,
     );
     this.generalScholarshipPeriod.to = new Date(
-      this.now.getFullYear(),
+      this.now.getFullYear() + (this.now.getMonth() >= 3 ? 1 : 0),
       2,
       30,
       23,
@@ -78,7 +78,7 @@ export class ScholarshipsComponent implements OnInit {
       this.now <= this.generalScholarshipPeriod.to;
 
     this.newellScholarshipPeriod.from = new Date(
-      this.now.getFullYear(),
+      this.now.getFullYear() + ((this.now.getMonth() >= 11) && (this.now.getDate() > 1) ? 1 : 0),
       8,
       3,
       0,
@@ -87,8 +87,8 @@ export class ScholarshipsComponent implements OnInit {
       0,
     );
     this.newellScholarshipPeriod.to = new Date(
-      this.now.getFullYear(),
-      10,
+      this.now.getFullYear() + ((this.now.getMonth() >= 11) && (this.now.getDate() > 1) ? 1 : 0),
+      11,
       1,
       23,
       59,
