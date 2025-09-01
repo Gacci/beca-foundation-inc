@@ -4,7 +4,7 @@ name: Deploy Angular to S3 + CloudFront
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-deploy:
@@ -33,7 +33,7 @@ jobs:
       - name: Deploy to S3
         uses: aws-actions/s3-sync@v2
         with:
-          source_dir: 'dist/<project-name>'   # replace <project-name> with your Angular project folder
+          source_dir: 'dist'   # replace <project-name> with your Angular project folder
           dest_dir: '/'
           bucket: ${{ secrets.S3_BUCKET }}
           region: ${{ secrets.AWS_REGION }}
