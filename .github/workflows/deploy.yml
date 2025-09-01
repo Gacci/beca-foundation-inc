@@ -1,6 +1,6 @@
 name: Deploy Angular to S3 + CloudFront (Test)
 
-# Trigger on push to master branch
+# Trigger on push to master branch (update)
 on:
   push:
     branches:
