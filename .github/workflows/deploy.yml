@@ -1,10 +1,10 @@
-name: Deploy Angular to S3 + CloudFront
+name: Deploy Angular to S3 + CloudFront (Test)
 
-# Trigger the workflow on push to main
+# Trigger on push to master branch
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build-and-deploy:
@@ -19,7 +19,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # adjust to your Angular Node version
+          node-version: '20'
 
       # 3️⃣ Install dependencies
       - name: Install Dependencies
@@ -29,24 +29,36 @@ jobs:
       - name: Build Angular
         run: npm run build -- --configuration production
 
-      # 5️⃣ Deploy to S3
-      - name: Deploy to S3
-        uses: aws-actions/s3-sync@v2
-        with:
-          source_dir: 'dist'   # replace <project-name> with your Angular project folder
-          dest_dir: '/'
-          bucket: ${{ secrets.S3_BUCKET }}
-          region: ${{ secrets.AWS_REGION }}
-          delete: true
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      # 5️⃣ Test AWS secrets (safe step)
+      - name: Test AWS Secrets
+        run: |
+          echo "AWS_BUCKET is set: ${AWS_BUCKET}"
+          echo "AWS_REGION is set: ${AWS_REGION}"
+          echo "CLOUDFRONT_ID is set: ${CLOUDFRONT_ID}"
+        env:
+          AWS_BUCKET: ${{ secrets.S3_BUCKET }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          CLOUDFRONT_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
 
-      # 6️⃣ Invalidate CloudFront cache
-      - name: Invalidate CloudFront Cache
-        uses: aws-actions/cloudfront-invalidate@v2
-        with:
-          distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
-          paths: '/*'
-          region: ${{ secrets.AWS_REGION }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      # 6️⃣ Deploy to S3 (uncomment to activate real deploy)
+      # - name: Deploy to S3
+      #   uses: aws-actions/s3-sync@v1
+      #   with:
+      #     source_dir: 'dist/<project-name>'  # replace with your Angular dist folder
+      #     dest_dir: '/'
+      #     bucket: ${{ secrets.S3_BUCKET }}
+      #     region: ${{ secrets.AWS_REGION }}
+      #     delete: true
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # 7️⃣ Invalidate CloudFront Cache (uncomment to activate)
+      # - name: Invalidate CloudFront Cache
+      #   uses: aws-actions/cloudfront-invalidate@v1
+      #   with:
+      #     distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+      #     paths: '/*'
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
