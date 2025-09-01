@@ -44,7 +44,7 @@ jobs:
       - name: Deploy to S3
         uses: aws-actions/s3-sync@v1
         with:
-          source_dir: 'dist/<project-name>'  # replace with your Angular dist folder
+          source_dir: 'dist'  # replace with your Angular dist folder
           dest_dir: '/'
           bucket: ${{ secrets.S3_BUCKET }}
           region: ${{ secrets.AWS_REGION }}
